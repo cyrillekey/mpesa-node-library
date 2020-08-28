@@ -7,13 +7,14 @@
  * @param  {number} amount                                    The amount to be transacted
  * @param  {string} callbackUrl                               Call Back URL
  * @param  {string} accountRef                                Account Reference
+ * @param  {number} partyB                                    Organization till number
  * @param  {string} [transactionDesc='Lipa na mpesa online']  any string of less then 20 characters
  * @param  {string} [transactionType='CustomerPayBillOnline'] The transaction type to be used for the request 'CustomerPayBillOnline'
  * @param  {number} [shortCode=null]                          The organization shortcode used to receive the transaction
  * @param  {string} [passKey=null]                            Lipa na mpesa passKey
  * @return {Promise}
  */
-module.exports = async function (senderMsisdn, amount, callbackUrl, accountRef, transactionDesc = 'Lipa na mpesa online', transactionType = 'CustomerPayBillOnline', shortCode = null, passKey = null) {
+module.exports = async function (senderMsisdn, amount, callbackUrl, accountRef, partyB, transactionDesc = 'Lipa na mpesa online', transactionType = 'CustomerPayBillOnline', shortCode = null, passKey = null) {
     const _shortCode = shortCode || this.configs.lipaNaMpesaShortCode;
     const _passKey = passKey || this.configs.lipaNaMpesaShortPass;
     const timeStamp = new Date()
@@ -29,7 +30,7 @@ module.exports = async function (senderMsisdn, amount, callbackUrl, accountRef, 
         TransactionType: transactionType,
         Amount: amount,
         PartyA: senderMsisdn,
-        PartyB: _shortCode,
+        PartyB: partyB,
         PhoneNumber: senderMsisdn,
         CallBackURL: callbackUrl,
         AccountReference: accountRef,
