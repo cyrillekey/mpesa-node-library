@@ -12,12 +12,12 @@
  * @return {Promise}
  */
 module.exports = async function (msisdn, amount, billRefNumber, commandId = 'CustomerPayBillOnline', shortCode = null) {
-  const req = await this.request()
-  return req.post('/mpesa/c2b/v1/simulate', {
-    'ShortCode': shortCode || this.configs.shortCode,
-    'CommandID': commandId,
-    'Amount': amount,
-    'Msisdn': msisdn,
-    'BillRefNumber': billRefNumber
-  })
-}
+    const req = await this.request();
+    return req.post('/mpesa/c2b/v1/simulate', {
+        ShortCode: shortCode || this.configs.shortCode,
+        CommandID: commandId,
+        Amount: amount,
+        Msisdn: msisdn,
+        BillRefNumber: billRefNumber,
+    });
+};

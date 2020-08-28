@@ -16,19 +16,19 @@
  * @return {Promise}
  */
 module.exports = async function (transactionId, amount, queueUrl, resultUrl, shortCode = null, remarks = 'Reversal', occasion = 'Reversal', initiator = null, receiverIdType = '11', commandId = 'TransactionReversal') {
-  const securityCredential = this.security()
-  const req = await this.request()
-  return req.post('/mpesa/reversal/v1/request', {
-    'Initiator': initiator || this.configs.initiatorName,
-    'SecurityCredential': securityCredential,
-    'CommandID': commandId,
-    'TransactionID': transactionId,
-    'Amount': amount,
-    'ReceiverParty': shortCode || this.configs.shortCode,
-    'RecieverIdentifierType': receiverIdType,
-    'ResultURL': resultUrl,
-    'QueueTimeOutURL': queueUrl,
-    'Remarks': remarks,
-    'Occasion': occasion
-  })
-}
+    const securityCredential = this.security();
+    const req = await this.request();
+    return req.post('/mpesa/reversal/v1/request', {
+        Initiator: initiator || this.configs.initiatorName,
+        SecurityCredential: securityCredential,
+        CommandID: commandId,
+        TransactionID: transactionId,
+        Amount: amount,
+        ReceiverParty: shortCode || this.configs.shortCode,
+        RecieverIdentifierType: receiverIdType,
+        ResultURL: resultUrl,
+        QueueTimeOutURL: queueUrl,
+        Remarks: remarks,
+        Occasion: occasion,
+    });
+};

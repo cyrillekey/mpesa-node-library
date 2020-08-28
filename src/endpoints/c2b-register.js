@@ -11,11 +11,11 @@
  * @return {Promise}
  */
 module.exports = async function (confirmationUrl, validationUrl, shortCode = null, responseType = 'Completed') {
-  const req = await this.request()
-  return req.post('/mpesa/c2b/v1/registerurl', {
-    'ShortCode': shortCode || this.configs.shortCode,
-    'ResponseType': responseType,
-    'ConfirmationURL': confirmationUrl,
-    'ValidationURL': validationUrl
-  })
-}
+    const req = await this.request();
+    return req.post('/mpesa/c2b/v1/registerurl', {
+        ShortCode: shortCode || this.configs.shortCode,
+        ResponseType: responseType,
+        ConfirmationURL: confirmationUrl,
+        ValidationURL: validationUrl,
+    });
+};

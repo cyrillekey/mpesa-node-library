@@ -16,18 +16,18 @@
  * @return {Promise}
  */
 module.exports = async function (senderParty, receiverParty, amount, queueUrl, resultUrl, commandId = 'BusinessPayment', initiatorName = null, remarks = 'B2C Payment', occasion) {
-  const securityCredential = this.security()
-  const req = await this.request()
-  return req.post('/mpesa/b2c/v1/paymentrequest', {
-    'InitiatorName': initiatorName || this.configs.initiatorName,
-    'SecurityCredential': securityCredential,
-    'CommandID': commandId,
-    'Amount': amount,
-    'PartyA': senderParty,
-    'PartyB': receiverParty,
-    'Remarks': remarks,
-    'QueueTimeOutURL': queueUrl,
-    'ResultURL': resultUrl,
-    'Occasion': occasion
-  })
-}
+    const securityCredential = this.security();
+    const req = await this.request();
+    return req.post('/mpesa/b2c/v1/paymentrequest', {
+        InitiatorName: initiatorName || this.configs.initiatorName,
+        SecurityCredential: securityCredential,
+        CommandID: commandId,
+        Amount: amount,
+        PartyA: senderParty,
+        PartyB: receiverParty,
+        Remarks: remarks,
+        QueueTimeOutURL: queueUrl,
+        ResultURL: resultUrl,
+        Occasion: occasion,
+    });
+};
