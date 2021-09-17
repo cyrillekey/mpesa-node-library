@@ -29,17 +29,17 @@ interface IMpesaConfigs {
  * Class representing the Mpesa instance
  */
 class Mpesa {
-  configs: any;
-  security: string;
-  request: AxiosInstance;
-  baseURL: string;
-  environment: MpesaEnvironment;
-  shortCode: number;
-  initiatorName: string;
-  lipaNaMpesaShortCode: string;
-  lipaNaMpesaShortPass: string;
-  securityCredential: string;
-  certPath: string;
+  private configs: any;
+  private security: string;
+  private request: AxiosInstance;
+  private baseURL: string;
+  private environment: MpesaEnvironment;
+  private shortCode: number;
+  private initiatorName: string;
+  private lipaNaMpesaShortCode: string;
+  private lipaNaMpesaShortPass: string;
+  private securityCredential: string;
+  private certPath: string;
   constructor(config: IMpesaConfigs) {
     if (!config.consumerKey) throw new Error('Consumer Key is Missing');
     if (!config.consumerSecret) throw new Error('Consumer Secret is Missing');
@@ -79,7 +79,7 @@ class Mpesa {
   lipaNaMpesaQuery(opts: ILipaNaMpesaQuery) {
     return lipaNaMpesaQuery.bind(this)(opts);
   }
-  oAuth() {
+  private oAuth() {
     const { consumerKey, consumerSecret } = this.configs;
     return oAuth.bind(this)(consumerKey, consumerSecret);
   }
