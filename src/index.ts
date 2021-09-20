@@ -19,7 +19,7 @@ interface IMpesaConfigs {
   environment?: MpesaEnvironment;
   shortCode?: number;
   initiatorName?: string;
-  lipaNaMpesaShortCode?: string;
+  lipaNaMpesaShortCode?: number;
   lipaNaMpesaShortPass?: string;
   securityCredential?: string;
   certPath?: string;
@@ -36,7 +36,7 @@ class Mpesa {
   private environment: MpesaEnvironment;
   private shortCode: number;
   private initiatorName: string;
-  private lipaNaMpesaShortCode: string;
+  private lipaNaMpesaShortCode: number;
   private lipaNaMpesaShortPass: string;
   private securityCredential: string;
   private certPath: string;
