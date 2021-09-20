@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios';
+
 export interface IC2BRegister {
   confirmationUrl: string;
   validationUrl: string;
@@ -5,7 +7,7 @@ export interface IC2BRegister {
   responseType?: string;
 }
 
-export default async function (opts: IC2BRegister): Promise<any> {
+export default async function (opts: IC2BRegister): Promise<AxiosResponse<any>> {
   const req = await this.request();
   return req.post('/mpesa/c2b/v1/registerurl', {
     ShortCode: opts.shortCode || this.configs.shortCode,

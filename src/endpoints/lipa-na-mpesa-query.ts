@@ -1,9 +1,11 @@
+import { AxiosResponse } from 'axios';
+
 export interface ILipaNaMpesaQuery {
   checkoutRequestId: string;
   shortCode?: number;
   passKey?: string;
 }
-export default async function (opts: ILipaNaMpesaQuery): Promise<any> {
+export default async function (opts: ILipaNaMpesaQuery): Promise<AxiosResponse<any>> {
   const _shortCode = opts.shortCode || this.configs.lipaNaMpesaShortCode;
   const _passKey = opts.passKey || this.configs.lipaNaMpesaShortPass;
   const timeStamp = new Date()

@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios';
+
 export interface ITransactionStatus {
   transactionId: string;
   receiverParty: number;
@@ -10,7 +12,7 @@ export interface ITransactionStatus {
   commandId?: string;
 }
 
-export default async function (opts: ITransactionStatus): Promise<any> {
+export default async function (opts: ITransactionStatus): Promise<AxiosResponse<any>> {
   const securityCredential = this.security();
   const req = await this.request();
   return req.post('/mpesa/transactionstatus/v1/query', {

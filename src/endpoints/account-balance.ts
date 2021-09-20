@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios';
+
 export interface IAccountBalance {
   shortCode: number;
   idType: number;
@@ -8,7 +10,7 @@ export interface IAccountBalance {
   commandId?: string;
 }
 
-export default async function accountBalance(opts: IAccountBalance): Promise<any> {
+export default async function accountBalance(opts: IAccountBalance): Promise<AxiosResponse<any>> {
   const securityCredential = this.security();
   const req = await this.request();
   return req.post('/mpesa/accountbalance/v1/query', {

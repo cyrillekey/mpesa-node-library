@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios';
+
 export interface IReversal {
   transactionId: string;
   amount: number;
@@ -11,7 +13,7 @@ export interface IReversal {
   commandId?: string;
 }
 
-export default async function (opts: IReversal): Promise<any> {
+export default async function (opts: IReversal): Promise<AxiosResponse<any>> {
   const securityCredential = this.security();
   const req = await this.request();
   return req.post('/mpesa/reversal/v1/request', {

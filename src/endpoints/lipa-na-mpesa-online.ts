@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios';
+
 export interface ISTKPushArguments {
   senderMsisdn: number;
   amount: number;
@@ -9,7 +11,7 @@ export interface ISTKPushArguments {
   shortCode?: number;
   passKey?: string;
 }
-export default async function (opts: ISTKPushArguments): Promise<any> {
+export default async function (opts: ISTKPushArguments): Promise<AxiosResponse<any>> {
   const _shortCode = opts.shortCode || this.configs.lipaNaMpesaShortCode;
   const _passKey = opts.passKey || this.configs.lipaNaMpesaShortPass;
   const timeStamp = new Date()

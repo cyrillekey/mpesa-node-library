@@ -1,3 +1,5 @@
+import { AxiosResponse } from 'axios';
+
 export interface IB2BArguments {
   senderParty: number;
   receiverParty: number;
@@ -12,7 +14,7 @@ export interface IB2BArguments {
   remarks?: string;
 }
 
-export default async function (opts: IB2BArguments): Promise<any> {
+export default async function (opts: IB2BArguments): Promise<AxiosResponse<any>> {
   const req = await this.request();
   const securityCredential = this.security();
   return req.post('/mpesa/b2b/v1/paymentrequest', {
