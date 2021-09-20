@@ -11,8 +11,14 @@ export interface IB2CArguments {
   remarks?: string;
   occasion?: string;
 }
+export interface IB2CResponse {
+  ConversationID: string;
+  OriginatorConversationID: string;
+  ResponseCode: string;
+  ResponseDescription: string;
+}
 
-export default async function (opts: IB2CArguments): Promise<AxiosResponse<any>> {
+export default async function (opts: IB2CArguments): Promise<AxiosResponse<IB2CResponse>> {
   const securityCredential = this.security();
   const req = await this.request();
   return req.post('/mpesa/b2c/v1/paymentrequest', {
