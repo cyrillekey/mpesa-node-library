@@ -12,6 +12,36 @@ import { ITransactionStatus } from './endpoints/transaction-status';
 import { request, security } from './helpers';
 
 type MpesaEnvironment = 'production' | 'sandbox';
+export interface IB2CResponse {
+  ConversationID: string;
+  OriginatorConversationID: string;
+  ResponseCode: string;
+  ResponseDescription: string;
+}
+
+export interface ISTKPushResponse {
+  MerchantRequestID: string;
+  CheckoutRequestID: string;
+  ResponseCode: string;
+  ResponseDescription: string;
+  CustomerMessage: string;
+}
+export interface ISTKPushResultPayload {
+  Body: {
+    stkCallback: {
+      ResultCode: number;
+      ResultDesc: string;
+      MerchantRequestID: string;
+      CheckoutRequestID: string;
+    };
+    CallbackMetadata: {
+      Item: {
+        Name: 'Amount' | 'MpesaReceiptNumber' | 'PhoneNumber';
+        Value: number | string;
+      }[];
+    };
+  };
+}
 
 interface IMpesaConfigs {
   consumerKey: string;

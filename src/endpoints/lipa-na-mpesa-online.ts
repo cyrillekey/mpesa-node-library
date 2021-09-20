@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+import { ISTKPushResponse } from '..';
 
 export interface ISTKPushArguments {
   senderMsisdn: number;
@@ -11,29 +12,7 @@ export interface ISTKPushArguments {
   shortCode?: number;
   passKey?: string;
 }
-export interface ISTKPushResponse {
-  MerchantRequestID: string;
-  CheckoutRequestID: string;
-  ResponseCode: string;
-  ResponseDescription: string;
-  CustomerMessage: string;
-}
-export interface ISTKPushResultPayload {
-  Body: {
-    stkCallback: {
-      ResultCode: number;
-      ResultDesc: string;
-      MerchantRequestID: string;
-      CheckoutRequestID: string;
-    };
-    CallbackMetadata: {
-      Item: {
-        Name: 'Amount' | 'MpesaReceiptNumber' | 'PhoneNumber';
-        Value: number | string;
-      }[];
-    };
-  };
-}
+
 export default async function (opts: ISTKPushArguments): Promise<AxiosResponse<ISTKPushResponse>> {
   const _shortCode = opts.shortCode || this.configs.lipaNaMpesaShortCode;
   const _passKey = opts.passKey || this.configs.lipaNaMpesaShortPass;

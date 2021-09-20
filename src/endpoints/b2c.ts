@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+import { IB2CResponse } from '..';
 
 export interface IB2CArguments {
   senderParty: number;
@@ -10,12 +11,6 @@ export interface IB2CArguments {
   initiatorName: string;
   remarks?: string;
   occasion?: string;
-}
-export interface IB2CResponse {
-  ConversationID: string;
-  OriginatorConversationID: string;
-  ResponseCode: string;
-  ResponseDescription: string;
 }
 
 export default async function (opts: IB2CArguments): Promise<AxiosResponse<IB2CResponse>> {

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2015",
     "lib": ["ESNext", "DOM"],
-    "module": "commonjs",
+    "module": "CommonJS",
     "outDir": "dist",
     "rootDir": "src",
     "removeComments": false,
@@ -17,7 +17,6 @@
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "sourceMap": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "declaration": true
