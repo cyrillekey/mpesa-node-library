@@ -33,12 +33,12 @@ export interface ISTKPushResultPayload {
       ResultDesc: string;
       MerchantRequestID: string;
       CheckoutRequestID: string;
-    };
-    CallbackMetadata: {
-      Item: {
-        Name: 'Amount' | 'MpesaReceiptNumber' | 'PhoneNumber';
-        Value: number | string;
-      }[];
+      CallbackMetadata: {
+        Item: {
+          Name: 'Amount' | 'MpesaReceiptNumber' | 'PhoneNumber';
+          Value: number | string;
+        }[];
+      };
     };
   };
 }
