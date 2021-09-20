@@ -37,6 +37,8 @@ export interface ISTKPushResultPayload {
 export default async function (opts: ISTKPushArguments): Promise<AxiosResponse<ISTKPushResponse>> {
   const _shortCode = opts.shortCode || this.configs.lipaNaMpesaShortCode;
   const _passKey = opts.passKey || this.configs.lipaNaMpesaShortPass;
+  if (!_shortCode) throw new Error(`Error! Lipa Na M-Pesa shortcode is required!`);
+  if (!_passKey) throw new Error(`Error! Lipa Na M-Pesa pass key is required!`);
   const timeStamp = new Date()
     .toISOString()
     .replace(/[^0-9]/g, '')
