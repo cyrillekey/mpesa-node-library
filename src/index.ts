@@ -46,7 +46,6 @@ class Mpesa {
     this.configs = { ...config };
     this.environment = config.environment === 'production' ? 'production' : 'sandbox';
     this.request = request.bind(this) as any;
-    this.security = security(this.configs.certPath, this.configs.securityCredential);
     this.baseURL = `https://${this.environment === 'production' ? 'api' : 'sandbox'}.safaricom.co.ke`;
     this.shortCode = config.shortCode;
     this.initiatorName = config.initiatorName;
@@ -62,6 +61,7 @@ class Mpesa {
     return b2b.bind(this)(opts);
   }
   b2c(opts: IB2CArguments) {
+    this.security = security(this.configs.certPath, this.configs.securityCredential);
     return b2c.bind(this)(opts);
   }
   c2bRegister(opts: IC2BRegister) {
