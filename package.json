@@ -1,6 +1,6 @@
 {
   "name": "oratech-mpesa-node",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Node M-Pesa Library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
