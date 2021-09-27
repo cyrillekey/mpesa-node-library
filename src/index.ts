@@ -60,7 +60,7 @@ interface IMpesaConfigs {
  */
 class Mpesa {
   private configs: any;
-  private security: string;
+  private security: typeof security;
   private request: AxiosInstance;
   private baseURL: string;
   private environment: MpesaEnvironment;
@@ -83,6 +83,7 @@ class Mpesa {
     this.lipaNaMpesaShortPass = config.lipaNaMpesaShortPass;
     this.securityCredential = config.securityCredential;
     this.certPath = config.certPath;
+    this.security = security;
   }
   accountBalance(opts: IAccountBalance) {
     return accountBalance.bind(this)(opts);
@@ -91,7 +92,6 @@ class Mpesa {
     return b2b.bind(this)(opts);
   }
   b2c(opts: IB2CArguments) {
-    this.security = security(this.configs.certPath, this.configs.securityCredential);
     return b2c.bind(this)(opts);
   }
   c2bRegister(opts: IC2BRegister) {
